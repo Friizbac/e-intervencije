@@ -59,5 +59,5 @@
             <li class="{{ Request::is('users') ? 'active' : '' }}"><a href="/users">Lista administratora</a></li>
         </ul>
     </li>
-
 </ul>
+

@@ -37,4 +37,9 @@
                     @else
                         <p>Nema operativnih članova</p>
     @endif
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </section>
 @endsection

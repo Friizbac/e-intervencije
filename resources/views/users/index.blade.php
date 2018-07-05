@@ -37,4 +37,9 @@
                     @else
                         <p>Nema obavijesti</p>
     @endif
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </section>
 @endsection

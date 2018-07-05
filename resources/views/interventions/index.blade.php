@@ -22,7 +22,7 @@
                                             @foreach($interventions as $intervention)
                                                 <tr>
                                                     <td><a href="/interventions/{{$intervention->id}}">{{$intervention->id}}</a></td>
-                                                    <td>{{$intervention->description}}</td>
+                                                    <td><a href="/interventions/{{$intervention->id}}">{{$intervention->description}}</a></td>
                                                     <td>{{$intervention->type}}</td>
                                                     <td>{{$intervention->created_at}}</td>
                                                     <td>{{$intervention->address}}</td>
@@ -39,4 +39,9 @@
                                         @else
                                             <p>Nema intervencija</p>
     @endif
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </section>
 @endsection
