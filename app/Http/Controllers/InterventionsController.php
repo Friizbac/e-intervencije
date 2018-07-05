@@ -4,7 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Intervention;
-
+use App\Member;
+use Twilio;
 class InterventionsController extends Controller
 {
     /**
@@ -48,6 +49,11 @@ class InterventionsController extends Controller
         $intervention->address = $request->input('address');
         $intervention->type = $request->input('type');
         $intervention->save();
+        $message = "[INTERVENCIJA] \n\n" . "Vrsta intervencije: " . $request->input('type') . "\nOpis: " . $request->input('description') . "\nAdresa: " . $request->input('address');
+        foreach (Member::all() as $member)
+        {
+            Twilio::message($member->tel, $message);
+        }
         return redirect('/interventions')->with('success', 'Intervencija kreirana');
 
     }
@@ -97,6 +103,11 @@ class InterventionsController extends Controller
         $intervention->address = $request->input('address');
         $intervention->type = $request->input('type');
         $intervention->save();
+        $message = "[INTERVENCIJA] \n\n" . "Vrsta intervencije: " . $request->input('type') . "\nOpis: " . $request->input('description') . "\nAdresa: " . $request->input('address');
+        foreach (Member::all() as $member)
+        {
+            Twilio::message($member->tel, $message);
+        }
         return redirect('/interventions')->with('success', 'Intervencija ažurirana');
     }
 

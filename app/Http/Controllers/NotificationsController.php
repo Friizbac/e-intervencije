@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Notification;
+use App\Member;
+use Twilio;
 
 class NotificationsController extends Controller
 {
@@ -45,6 +47,15 @@ class NotificationsController extends Controller
         $notification->title = $request->input('title');
         $notification->description = $request->input('description');
         $notification->save();
+        $message = "[OBAVIJEST] \n\n" . $request->input('title') . "\n" . $request->input('description');
+        foreach (Member::all() as $member)
+        {
+            Twilio::message($member->tel, $message);
+        }
+
+
+
+
         return redirect('/notifications')->with('success', 'Obavijest kreirana');
     }
 
@@ -89,6 +100,11 @@ class NotificationsController extends Controller
         $notification->title = $request->input('title');
         $notification->description = $request->input('description');
         $notification->save();
+        $message = "[OBAVIJEST] \n\n" . $request->input('title') . "\n" . $request->input('description');
+        foreach (Member::all() as $member)
+        {
+            Twilio::message($member->tel, $message);
+        }
         return redirect('/notifications')->with('success', 'Obavijest ažurirana');
     }
 
