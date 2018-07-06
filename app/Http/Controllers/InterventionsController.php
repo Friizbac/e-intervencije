@@ -47,6 +47,8 @@ class InterventionsController extends Controller
         $intervention = new Intervention;
         $intervention->description = $request->input('description');
         $intervention->address = $request->input('address');
+        $intervention->lat = $request->input('lat');
+        $intervention->lng = $request->input('lng');
         $intervention->type = $request->input('type');
         $intervention->save();
         $message = "[INTERVENCIJA] \n\n" . "Vrsta intervencije: " . $request->input('type') . "\nOpis: " . $request->input('description') . "\nAdresa: " . $request->input('address');
@@ -101,6 +103,11 @@ class InterventionsController extends Controller
         $intervention = Intervention::find($id);
         $intervention->description = $request->input('description');
         $intervention->address = $request->input('address');
+        if(!empty($request->input('lat'))){
+            $intervention->lat = $request->input('lat');
+            $intervention->lng = $request->input('lng');
+        }
+
         $intervention->type = $request->input('type');
         $intervention->save();
         $message = "[INTERVENCIJA] \n\n" . "Vrsta intervencije: " . $request->input('type') . "\nOpis: " . $request->input('description') . "\nAdresa: " . $request->input('address');

@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateInterventionsTable extends Migration
+class CreateGMapsGeoCacheTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,13 +13,11 @@ class CreateInterventionsTable extends Migration
      */
     public function up()
     {
-        Schema::create('interventions', function (Blueprint $table) {
+        Schema::create('gmaps_geocache', function (Blueprint $table) {
             $table->increments('id');
-            $table->mediumText('description');
-            $table->mediumText('address');
-            $table->string('lat');
-            $table->string('lng');
-            $table->string('type');
+            $table->text('address');
+            $table->string('latitude');
+            $table->string('longitude');
             $table->timestamps();
         });
     }
@@ -31,6 +29,6 @@ class CreateInterventionsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('interventions');
+        Schema::drop('gmaps_geocache');
     }
 }

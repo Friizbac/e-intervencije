@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use App\Intervention;
 use App\Http\Controllers\UsersController;
 
 class HomeController extends Controller
@@ -29,7 +30,10 @@ class HomeController extends Controller
         $users = DB::table('users')->count();
         $notifications = DB::table('notifications')->count();
         $interventions = DB::table('interventions')->count();
-        return view('home')->with(compact('members','users','notifications','interventions'));
+        $interventions_map = Intervention::all();
+
+
+        return view('home')->with(compact('members','users','notifications','interventions', 'interventions_map'));
 
 
     }

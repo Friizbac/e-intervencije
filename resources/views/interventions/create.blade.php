@@ -10,8 +10,9 @@
                     <div class="form-group">
                     {{Form::label('address', 'Adresa intervencije(automatska ispuna)')}}
                     <div id="locationField">
-                        {{Form::text('address', '', ['class' => 'form-control','id' => 'autocomplete','onfocus' =>'geolocate()','autocomplete' => 'off', 'placeholder' => 'Započnite pisanje adrese'])}}
-
+                        {{Form::text('address', '', ['class' => 'form-control','id' => 'autocomplete','autocomplete' => 'off', 'placeholder' => 'Započnite pisanje adrese'])}}
+                        {{Form::hidden('lat', '',['id' => 'lat'])}}
+                        {{Form::hidden('lng', '',['id' => 'lng'])}}
                     </div>
 
                 </div>
